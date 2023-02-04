@@ -1,0 +1,47 @@
+#logo
+{
+    width: max(100px, 18vw);
+    padding: 2px;
+    border-radius: 12px;
+    text-align: center;
+    background-color: black;
+}
+
+header
+{
+    text-align: center;
+}
+
+#image-box
+{
+    height: 400px;
+    margin: auto;
+    width: 60%;
+    border: 5px solid orange;
+    border-radius: 16px;
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    padding: 10px;
+}
+
+
+
+input{
+
+    height: auto;
+    margin: auto;
+    margin-top: 10px;
+    width: auto;
+    padding: 10px;
+    border-radius: 8px;
+    border-color: darkorange;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 20px;
+    transition-duration: 0.3s;
+}
+
+input:hover
+{
+    background-color: darkorange;
+    color: white;
+}
