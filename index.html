@@ -7,11 +7,25 @@
     <link rel="stylesheet" href="styles.css">
     <title>Food Genie</title>
     <style>
-        body {
+      body {
         background-image: url("Background.jpg");
         background-size: cover;
         background-repeat: no-repeat;
         color:#cccccc;
+      }
+
+      #grid-container{
+        display:grid; 
+        grid-template-columns: auto auto auto;
+        padding: 10px;
+      }
+
+      .recipe-grid{
+        background-color: aliceblue;
+        border: 1px solid rgba(0, 0, 0, 0.8);
+        padding: 20px;
+        font-size: 30px;
+        text-align: center;
       }
       </style>
 </head>
@@ -19,7 +33,10 @@
     <header>
         <img id = "logo" src="logo.png" alt="logo">
     </header>
-    <div id="image-box" style = "overflow: hidden; text-align: center;"></div>
+    <div id="image-box" style = "overflow: hidden; text-align: center;">
+      <div id="grid-container"></div>
+    </div>
+    
 
         <div class = "button-row" style="display: flex; justify-content: center; align-items: center;">
             <input style = "background-color:rgb(245, 123, 0); border-radius: 8px; border: 2px solid rgb(0, 0, 0); font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;font-size: 20px; ;"id = "fileInput" type="file" accept="image/*">
@@ -31,8 +48,21 @@
         const fileInput = document.getElementById("fileInput");
         const processButton = document.getElementById("processButton");
         const imageContainer = document.getElementById("image-box");
+        const grid = document.getElementById("grid-container"); 
+
+
+        processButton.addEventListener('click', function(){
+          alert("button clicked")
+          for(let i = 0; i < 10; i++){
+            let divR = document.createElement('div'); 
+            divR.classList.add("recipe-grid");
+            grid.appendChild(divR); 
+          }
+        });
+          
+        
       
-        processButton.addEventListener("click", function () {
+        /* processButton.addEventListener("click", function () {
           const file = fileInput.files[0];
           const reader = new FileReader();
       
@@ -41,7 +71,7 @@
           };
       
           reader.readAsDataURL(file);
-        });
+        }); */
       </script>
     
 </body>
