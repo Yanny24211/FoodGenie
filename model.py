@@ -64,7 +64,7 @@ if os.path.exists(loadedModelDir):
     model = keras.models.load_model(loadedModelDir)
     print("Loaded the pre-trained model")
 else:
-    model.fit(trainData, trainFeatures, epoch=100)
+    model.fit(trainData, trainFeatures, epochs=200)
     model.save(loadedModelDir)
     print("Trained then saved the model.")
 
@@ -73,19 +73,27 @@ lossValues, accValues = model.evaluate(testData, testFeatures, verbose=1)
 print("############# Testing Accuracy: ", accValues)
 
 
-predictionVal = model.predict(testData)
+# predictionVal = model.predict(testData)
 
 
-for predicting, testFeature in zip(predictionVal, testFeatures):
-    fruitVegIndex = np.argmax(predicting)
-    fruitVegPredicted = classNames[fruitVegIndex]
+# for predicting, testFeature in zip(predictionVal, testFeatures):
+#     fruitVegIndex = np.argmax(predicting)
+#     fruitVegPredicted = classNames[fruitVegIndex]
 
-    fruitVegCorrect = classNames[testFeature]
+#     fruitVegCorrect = classNames[testFeature]
 
-    print("Predicted class: ", fruitVegPredicted, "  Actual class: ", fruitVegCorrect)
+#     print("Predicted class: ", fruitVegPredicted, "  Actual class: ", fruitVegCorrect)
 
+img = cv2.imread("C:/Users/pra_d/OneDrive/Desktop/Anmol/Projects/WebDev/repos/opticgenie/raddish.jpg")
+img = cv2.resize(img, (28, 28))
+img = img/255.0
+img = np.expand_dims(img, axis=0)
 
+prediction = model.predict(img)
+predicted_index = np.argmax(prediction)
+predicted_class = classNames[predicted_index]
 
+print("The predicted class is:", predicted_class)
 
 
 
