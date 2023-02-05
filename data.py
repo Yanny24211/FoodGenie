@@ -66,8 +66,8 @@ print(trainFeatures.shape)
 
 # cv2.waitKey(0)
 
-save('c:/tempFolder/trainData.py', trainData)
-save('c:/tempFolder/trainFeatures.py', trainFeatures)
+save('c:/tempFolder/trainData.npy', trainData)
+save('c:/tempFolder/trainFeatures.npy', trainFeatures)
 
 
 imgDir = "C:/Users/pra_d/OneDrive/Desktop/Anmol/Projects/WebDev/repos/OpticGenie/archive/test"
@@ -107,9 +107,9 @@ print("Number of test records: ", testData.shape[0])
 print(testData.shape)
 print(testFeatures.shape)
 
-save('c:/tempFolder/testData.py', testData)
-save('c:/tempFolder/largeTestData.py', testData)
-save('c:/tempFolder/testFeatures.py', testFeatures)
+save('c:/tempFolder/testData.npy', testData)
+save('c:/tempFolder/largeTestData.npy', largeTestData)
+save('c:/tempFolder/testFeatures.npy', testFeatures)
 
 
 
