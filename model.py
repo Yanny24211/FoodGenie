@@ -43,8 +43,6 @@ model = keras.Sequential([
     keras.layers.Dense(512, activation="relu"),
 
     keras.layers.Dense(36, activation="softmax")
-
-
 ])
 
 print("Finished building the skeleton of the neural network")
@@ -60,41 +58,42 @@ model.compile(
 print("Finished compiling the model.")
 
 
-model.fit(trainData, trainFeatures, epochs=100)
+loadedModelDir = "c:/tempFolder/model.h5"
+
+if os.path.exists(loadedModelDir):
+    model = keras.models.load_model(loadedModelDir)
+    print("Loaded the pre-trained model")
+else:
+    model.fit(trainData, trainFeatures, epochs=200)
+    model.save(loadedModelDir)
+    print("Trained then saved the model.")
+
 
 lossValues, accValues = model.evaluate(testData, testFeatures, verbose=1)
 print("############# Testing Accuracy: ", accValues)
 
 
-predictionVal = model.predict(testData)
-
-# print("The index of the predicted fruit or vegetable:")
-
-# print(predictionVal[100])
-
-# fruitVegIndex = np.argmax(predictionVal[100])
-# print("Class: ", fruitVegIndex)
-
-# fruitVegName = classNames[fruitVegIndex]
-# print("Class: ", fruitVegName)
-
-# testImage = largeTestData[100]
-# cv2.imshow('testImage', testImage)
-# cv2.putText(testImage, fruitVegName, (50,50), cv2.FONT_HERSHEY_SIMPLEX,2,(255,0,0),2)
-# cv2.waitKey(0)
+# predictionVal = model.predict(testData)
 
 
+# for predicting, testFeature in zip(predictionVal, testFeatures):
+#     fruitVegIndex = np.argmax(predicting)
+#     fruitVegPredicted = classNames[fruitVegIndex]
 
-for predicting, testFeature in zip(predictionVal, testFeatures):
-    fruitVegIndex = np.argmax(predicting)
-    fruitVegPredicted = classNames[fruitVegIndex]
+#     fruitVegCorrect = classNames[testFeature]
 
-    fruitVegCorrect = classNames[testFeature]
+#     print("Predicted class: ", fruitVegPredicted, "  Actual class: ", fruitVegCorrect)
 
-    print("Predicted class: ", fruitVegPredicted, "  Actual class: ", fruitVegCorrect)
+img = cv2.imread("C:/Users/pra_d/OneDrive/Desktop/Anmol/Projects/WebDev/repos/opticgenie/raddish.jpg")
+img = cv2.resize(img, (28, 28))
+img = img/255.0
+img = np.expand_dims(img, axis=0)
 
+prediction = model.predict(img)
+predicted_index = np.argmax(prediction)
+predicted_class = classNames[predicted_index]
 
-
+print("The predicted class is:", predicted_class)
 
 
 
