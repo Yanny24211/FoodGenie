@@ -6,12 +6,13 @@ async function getRecipes(fruits) {
   return data.results;
 }
 
-export const dummyFruits = ["apple", "banana"];
+const dummyFruits = ["apple", "banana"];
 
 getRecipes(dummyFruits).then(recipes => {
   recipes.forEach(recipe => {
-    console.log(`ID: ${recipe.id}`);
-    console.log(`Title: ${recipe.title}`);
-    console.log(`Image: ${recipe.image}`);
+    let id = recipe.id;
+    let title = recipe.title;
+    let image = recipe.image;
+
   });
 });
