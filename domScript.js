@@ -13,7 +13,7 @@ processButton.addEventListener('click', function(){
     let divR = document.createElement('div'); 
     divR.classList.add("recipe-grid");
     reader.onload = function () {
-      divR.innerHTML = `<img src="${reader.result}" style="max-width: 100%; max-height: 100%; "  />`;
+      divR.innerHTML = `<img src="${reader.result}" style="max-width: 80%; max-height: 80%; float: left; vertical-align: center; "  />`;
     };
     reader.readAsDataURL(file); 
     grid.appendChild(divR); 
