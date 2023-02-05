@@ -17,7 +17,8 @@
       #grid-container{
         display:grid; 
         grid-template-columns: auto auto auto;
-        padding: 10px;
+        width: 100%; 
+        height: 100%; 
       }
 
       .recipe-grid{
@@ -53,7 +54,7 @@
 
         processButton.addEventListener('click', function(){
           alert("button clicked")
-          for(let i = 0; i < 10; i++){
+          for(let i = 0; i < 9; i++){
             let divR = document.createElement('div'); 
             divR.classList.add("recipe-grid");
             grid.appendChild(divR); 

@@ -6,7 +6,7 @@ async function getRecipes(fruits) {
   return data.results;
 }
 
-const dummyFruits = ["apple", "banana"];
+export const dummyFruits = ["apple", "banana"];
 
 getRecipes(dummyFruits).then(recipes => {
   recipes.forEach(recipe => {
