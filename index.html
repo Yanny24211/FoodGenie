@@ -16,17 +16,18 @@
 
       #grid-container{
         display:grid; 
-        grid-template-columns: auto auto auto;
-        width: 100%; 
-        height: 100%; 
+        grid-template-columns: 1fr 1fr;
+        max-width: 100%; 
+        max-height: 100%; 
       }
 
       .recipe-grid{
-        background-color: aliceblue;
+        background-color: greenyellow;
         border: 1px solid rgba(0, 0, 0, 0.8);
-        padding: 20px;
-        font-size: 30px;
-        text-align: center;
+        text-align: center;    
+        width: auto; 
+        height: 200px; 
+        overflow: hidden;    
       }
       </style>
 </head>
@@ -40,7 +41,7 @@
     
 
         <div class = "button-row" style="display: flex; justify-content: center; align-items: center;">
-            <input style = "background-color:rgb(245, 123, 0); border-radius: 8px; border: 2px solid rgb(0, 0, 0); font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;font-size: 20px; ;"id = "fileInput" type="file">
+            <input style = "background-color:rgb(245, 123, 0); border-radius: 8px; border: 2px solid rgb(0, 0, 0); font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;font-size: 20px; ;"id = "fileInput" type="file" multiple>
             <input id = "processButton"value="Process" type="Submit"></input>
         </div>
    
@@ -50,29 +51,31 @@
         const processButton = document.getElementById("processButton");
         const imageContainer = document.getElementById("image-box");
         const grid = document.getElementById("grid-container"); 
+        
 
 
         processButton.addEventListener('click', function(){
-          alert("button clicked")
-          for(let i = 0; i < 9; i++){
+          //alert("button clicked")
+          for(let i = 0; i < 4; i++){
+            const file = fileInput.files[i];
+            const reader = new FileReader(); 
             let divR = document.createElement('div'); 
             divR.classList.add("recipe-grid");
+            reader.onload = function () {
+              divR.innerHTML = `<img src="${reader.result}" style="max-width: 100%; max-height: 100%; "  />`;
+            };
+            reader.readAsDataURL(file); 
             grid.appendChild(divR); 
           }
         });
           
-        
+        fileInput.addEventListener('change', function(){
+          let divs = document.querySelectorAll(".recipe-grid"); 
+          for(let div of divs){
+            div.remove(); 
+          }
+        });
       
-        /* processButton.addEventListener("click", function () {
-          const file = fileInput.files[0];
-          const reader = new FileReader();
-      
-          reader.onload = function () {
-            imageContainer.innerHTML = `<img src="${reader.result}" style="max-width: 100%; max-height: 100%; display: inline-block; margin: auto;"  />`;
-          };
-      
-          reader.readAsDataURL(file);
-        }); */
       </script>
     
 </body>
