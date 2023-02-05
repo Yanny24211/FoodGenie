@@ -12,6 +12,7 @@ header
     text-align: center;
 }
 
+
 #image-box
 {
     height: 400px;
@@ -25,23 +26,34 @@ header
 }
 
 
-
 input{
 
     height: auto;
-    margin: auto;
     margin-top: 10px;
+    margin-right: 10px;
     width: auto;
     padding: 10px;
-    border-radius: 8px;
-    border-color: darkorange;
+    border-radius: 8px; border: 2px solid darkorange;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     font-size: 20px;
     transition-duration: 0.3s;
 }
 
+
 input:hover
 {
+    background-color: darkorange;
+    color: white;
+}
+
+input::file-selector-button{
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 20px;
+    color: rgb(0, 0, 0);
+    border-radius: 8px; border: 2px solid rgb(0, 0, 0);
+}
+
+input::file-selector-button:hover{
     background-color: darkorange;
     color: white;
 }

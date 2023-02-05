@@ -19,13 +19,30 @@
     <header>
         <img id = "logo" src="logo.png" alt="logo">
     </header>
-    <div id="image-box"></div>
-    <div class = "parent-row">
+    <div id="image-box" style = "overflow: hidden; text-align: center;"></div>
+
         <div class = "button-row" style="display: flex; justify-content: center; align-items: center;">
-            <input value="Upload"  type="Submit"></input>
-            <input value="Process" type="Submit"></input>
+            <input style = "background-color:rgb(245, 123, 0); border-radius: 8px; border: 2px solid rgb(0, 0, 0); font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;font-size: 20px; ;"id = "fileInput" type="file" accept="image/*">
+            <input id = "processButton"value="Process" type="Submit"></input>
         </div>
-    </div>
+   
+
+    <script>
+        const fileInput = document.getElementById("fileInput");
+        const processButton = document.getElementById("processButton");
+        const imageContainer = document.getElementById("image-box");
+      
+        processButton.addEventListener("click", function () {
+          const file = fileInput.files[0];
+          const reader = new FileReader();
+      
+          reader.onload = function () {
+            imageContainer.innerHTML = `<img src="${reader.result}" style="max-width: 100%; max-height: 100%; display: inline-block; margin: auto;"  />`;
+          };
+      
+          reader.readAsDataURL(file);
+        });
+      </script>
     
 </body>
 </html>
